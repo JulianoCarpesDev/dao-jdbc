@@ -1,9 +1,9 @@
 package application;
 
-import java.util.Date;
 import java.util.Locale;
 
-import model.entites.Department;
+import model.dao.DaoFactory;
+import model.dao.SellerDao;
 import model.entites.Seller;
 
 public class Program {
@@ -11,11 +11,9 @@ public class Program {
 	public static void main(String[] args) {
 		
 		Locale.setDefault(Locale.US);
+		SellerDao sellerDao = DaoFactory.crateSellerDao(); 
 		
-		Department obj = new Department(1, "Books");
-		
-		Seller seller = new Seller(21, "Juliano","julianocarpes.dev@gmail.com",new Date(), 4500.0, obj);
-		
+		Seller seller = sellerDao.findById(1);
 		
 		System.out.println(seller);
 	}
