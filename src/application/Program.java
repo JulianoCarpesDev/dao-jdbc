@@ -12,7 +12,7 @@ public class Program {
 		
 		Locale.setDefault(Locale.US);
 		SellerDao sellerDao = DaoFactory.crateSellerDao(); 
-		
+		System.out.println("->->->Teste findById<-<-<-");
 		Seller seller = sellerDao.findById(1);
 		
 		System.out.println(seller);
