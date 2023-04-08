@@ -1,5 +1,6 @@
 package application;
 
+import java.util.Date;
 import java.util.List;
 import java.util.Locale;
 
@@ -14,11 +15,13 @@ public class Program {
 		
 		Locale.setDefault(Locale.US);
 		SellerDao sellerDao = DaoFactory.crateSellerDao(); 
+		
 		System.out.println("->->->Teste findById<-<-<-");
 		Seller seller = sellerDao.findById(1);
 		System.out.println(seller);
+		
 		System.out.println("->->->Teste findByDepartment<-<-<-");
-		Department department = new Department(2, null);
+		Department department = new Department(3, null);
 		List<Seller>list = sellerDao.findByDepartment(department); 
 		for (Seller s : list) {
 			System.out.println(s);
@@ -30,6 +33,13 @@ public class Program {
 		for (Seller s : list2) {
 			System.out.println(s);
 		}
+		System.out.println("->->->Teste insert<-<-<-");
+		
+		Seller newSeller = new Seller(null, "Rafael","rafa.carpes@gmail.com" , new Date(), 2500.0, department);
+			
+			sellerDao.insert(newSeller);
+			
+			System.out.println("Inserted new Id = " + newSeller.getId());
 	}
 
 }
